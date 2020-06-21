@@ -5,47 +5,19 @@
 # Email: arijit.dg@hotmail.com |
 #------------------------------*
 
-def factorial(n):
+from itertools import permutations
 
-	fac = 1
-	while n != 1:
-		fac *= n
-		n -=1
-	return fac
+# I am not satisfied with this solution as it relies 
+# on an import, I hope to improve this in the future
 
 line = input()
-len_line = len(line)
-'''
-char_list = 'abcdefghijklmnopqrstuvwxyz'
 
+permlist = sorted(set(permutations(line)))
 
+# permutations show all possible permutations (not accounting for same objects)
+# set is used to only keep unique objects
+# sorted is used to sort in alphabetical order
 
-num_strings = factorial(len_line)
-
-unique_chars = []
-unique_count = []
-strings = []
-
-for x in line:
-	if x not in unique_chars:
-		unique_chars.append(x)
-		unique_count.append(line.count(x))
-		num_strings //= factorial(line.count(x))
-
-unique_len = len(unique_chars)
-
-print(num_strings)
-
-'''
-groups = [list(line)] * len_line
-strings = [[]]
-for i in groups:
-	strings = [x + [y] for x in strings for y in i]
-
-for i in range(len(strings)):
-	strings[i] = "".join(strings[i])
-print(list(strings))
-
-
-
-
+print(len(permlist))
+for perm in permlist:
+	print("".join(perm))
